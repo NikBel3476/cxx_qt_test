@@ -7,7 +7,7 @@ import QtQuick.Window 2.12
 
 // This must match the uri and version
 // specified in the qml_module in the build.rs script
-import cxx_qt_test 1.0
+import com.nb.cxx_qt.test 1.0
 
 Window {
     title: qsTr("Hello App")

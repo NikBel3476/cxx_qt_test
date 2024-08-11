@@ -1,0 +1,20 @@
+[package]
+name = "cxx_qt_test"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["staticlib"]
+
+[dependencies]
+cxx = "1.0"
+cxx-qt = { git = "https://github.com/KDAB/cxx-qt.git", branch = "main" }
+cxx-qt-lib = { git = "https://github.com/KDAB/cxx-qt.git", branch = "main" }
+
+[build-dependencies]
+# The link_qt_object_files features is required for statically linking Qt 6.
+cxx-qt-build = { git = "https://github.com/KDAB/cxx-qt.git", branch = "main" }
+
+[features]
+# This feature must be enabled for `cargo test` when linking Qt 6 statically.
+link_qt_object_files = [ "cxx-qt-build/link_qt_object_files" ]

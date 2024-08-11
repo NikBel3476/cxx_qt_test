@@ -82,37 +82,37 @@ dependencies = [
 [[package]]
 name = "cxx-qt"
 version = "0.6.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "08aa6cda7588b6d17c563b0d2fadc060d4204d04908c0f359ae288857091218d"
+source = "git+https://github.com/KDAB/cxx-qt.git?branch=main#9f2de71cb12e0a816653e2bdb99f4f369d27c5c4"
 dependencies = [
  "cxx",
+ "cxx-build",
  "cxx-qt-macro",
+ "qt-build-utils",
  "static_assertions",
 ]
 
 [[package]]
 name = "cxx-qt-build"
 version = "0.6.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9e097b99f49792922a72a8ca35d9391762e48e63363d6998255be1f2ca1edf69"
+source = "git+https://github.com/KDAB/cxx-qt.git?branch=main#9f2de71cb12e0a816653e2bdb99f4f369d27c5c4"
 dependencies = [
  "cc",
  "codespan-reporting",
- "convert_case",
  "cxx-gen",
+ "cxx-qt",
  "cxx-qt-gen",
- "cxx-qt-lib-headers",
  "proc-macro2",
  "qt-build-utils",
  "quote",
+ "serde",
+ "serde_json",
  "version_check",
 ]
 
 [[package]]
 name = "cxx-qt-gen"
 version = "0.6.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ede7c73dbfbcc234d8826919e257830c1789db2cac586546a87d2a82e3cbe5d5"
+source = "git+https://github.com/KDAB/cxx-qt.git?branch=main#9f2de71cb12e0a816653e2bdb99f4f369d27c5c4"
 dependencies = [
  "clang-format",
  "convert_case",
@@ -125,26 +125,17 @@ dependencies = [
 [[package]]
 name = "cxx-qt-lib"
 version = "0.6.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "002f1a6119bcb7dfec67eb7c0803a7b1d595dc54610559faeac35133f22a5880"
+source = "git+https://github.com/KDAB/cxx-qt.git?branch=main#9f2de71cb12e0a816653e2bdb99f4f369d27c5c4"
 dependencies = [
  "cxx",
- "cxx-build",
- "cxx-qt-lib-headers",
- "qt-build-utils",
+ "cxx-qt",
+ "cxx-qt-build",
 ]
-
-[[package]]
-name = "cxx-qt-lib-headers"
-version = "0.6.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9abdeab6b77cfc5a53b724f3f62a37bcb5ac1423cccc2dba4c134f4273440b8c"
 
 [[package]]
 name = "cxx-qt-macro"
 version = "0.6.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "699e8a668c03b03419b084960d72eed253632bb16349b33fd0a0c893b61b664c"
+source = "git+https://github.com/KDAB/cxx-qt.git?branch=main#9f2de71cb12e0a816653e2bdb99f4f369d27c5c4"
 dependencies = [
  "cxx-qt-gen",
  "proc-macro2",
@@ -192,12 +183,18 @@ checksum = "b248f5224d1d606005e02c97f5aa4e88eeb230488bcc03bc9ca4d7991399f2b5"
 
 [[package]]
 name = "itertools"
-version = "0.11.0"
+version = "0.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b1c173a5686ce8bfa551b3563d0c2170bf24ca44da99c7ca4bfdab5418c3fe57"
+checksum = "413ee7dfc52ee1a4949ceeb7dbc8a33f2d6c088194d9f922fb8318faf1f01186"
 dependencies = [
  "either",
 ]
+
+[[package]]
+name = "itoa"
+version = "1.0.11"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "49f1f14873335454500d59611f1cf4a4b0f786f9ac11f4312a78e4cf2566695b"
 
 [[package]]
 name = "jobserver"
@@ -263,8 +260,7 @@ dependencies = [
 [[package]]
 name = "qt-build-utils"
 version = "0.6.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d59c828fe2434dad34dd0c30a4ba037509b61dad92a55baf0dc42699e6aa2f10"
+source = "git+https://github.com/KDAB/cxx-qt.git?branch=main#9f2de71cb12e0a816653e2bdb99f4f369d27c5c4"
 dependencies = [
  "cc",
  "thiserror",
@@ -281,10 +277,48 @@ dependencies = [
 ]
 
 [[package]]
+name = "ryu"
+version = "1.0.18"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f3cb5ba0dc43242ce17de99c180e96db90b235b8a9fdc9543c96d2209116bd9f"
+
+[[package]]
 name = "scratch"
 version = "1.0.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a3cf7c11c38cb994f3d40e8a8cde3bbd1f72a435e4c49e85d6553d8312306152"
+
+[[package]]
+name = "serde"
+version = "1.0.206"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5b3e4cd94123dd520a128bcd11e34d9e9e423e7e3e50425cb1b4b1e3549d0284"
+dependencies = [
+ "serde_derive",
+]
+
+[[package]]
+name = "serde_derive"
+version = "1.0.206"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fabfb6138d2383ea8208cf98ccf69cdfb1aff4088460681d84189aa259762f97"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "serde_json"
+version = "1.0.122"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "784b6203951c57ff748476b126ccb5e8e2959a5c19e5c617ab1956be3dbc68da"
+dependencies = [
+ "itoa",
+ "memchr",
+ "ryu",
+ "serde",
+]
 
 [[package]]
 name = "static_assertions"
@@ -358,9 +392,9 @@ checksum = "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a"
 
 [[package]]
 name = "versions"
-version = "5.0.1"
+version = "6.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c73a36bc44e3039f51fbee93e39f41225f6b17b380eb70cc2aab942df06b34dd"
+checksum = "f25d498b63d1fdb376b4250f39ab3a5ee8d103957346abacd911e2d8b612c139"
 dependencies = [
  "itertools",
  "nom",
