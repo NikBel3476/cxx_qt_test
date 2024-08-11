@@ -8,12 +8,12 @@ crate-type = ["staticlib"]
 
 [dependencies]
 cxx = "1.0"
-cxx-qt = { git = "https://github.com/KDAB/cxx-qt.git", branch = "main" }
-cxx-qt-lib = { git = "https://github.com/KDAB/cxx-qt.git", branch = "main" }
+cxx-qt = { git = "https://github.com/KDAB/cxx-qt.git", rev = "9f2de71" }
+cxx-qt-lib = { git = "https://github.com/KDAB/cxx-qt.git", rev = "9f2de71" }
 
 [build-dependencies]
 # The link_qt_object_files features is required for statically linking Qt 6.
-cxx-qt-build = { git = "https://github.com/KDAB/cxx-qt.git", branch = "main" }
+cxx-qt-build = { git = "https://github.com/KDAB/cxx-qt.git", rev = "9f2de71" }
 
 [features]
 # This feature must be enabled for `cargo test` when linking Qt 6 statically.
