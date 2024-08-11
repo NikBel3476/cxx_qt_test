@@ -1,0 +1,13 @@
+[package]
+name = "cxx_qt_test"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cxx = "1.0.124"
+cxx-qt = "0.6.1"
+cxx-qt-lib = "0.6.1"
+
+[build-dependencies]
+# The link_qt_object_files features is required for statically linking Qt 6.
+cxx-qt-build = { version = "0.6.1", features = [ "link_qt_object_files" ] }
