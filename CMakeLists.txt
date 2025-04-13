@@ -66,11 +66,14 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(CXXQT_QTCOMPONENTS Core Gui Qml QuickControls2 QuickTest Test)
+set(CXXQT_QTCOMPONENTS ${CXXQT_QTCOMPONENTS} QmlImportScanner)
+
 if(NOT USE_QT5)
-    find_package(Qt6 COMPONENTS Core Gui Qml QuickControls2 QmlImportScanner)
+    find_package(Qt6 COMPONENTS ${CXXQT_QTCOMPONENTS})
 endif()
 if(NOT Qt6_FOUND)
-    find_package(Qt5 5.15 COMPONENTS Core Gui Qml QuickControls2 QmlImportScanner REQUIRED)
+    find_package(Qt5 5.15 COMPONENTS ${CXXQT_QTCOMPONENTS} REQUIRED)
 endif()
 
 find_package(CxxQt QUIET)
@@ -86,8 +89,12 @@ if(NOT CxxQt_FOUND)
 endif()
 
 # CXX-Qt (using Corrosion) creates a CMake target with the same name as the crate.
-cxx_qt_import_crate(MANIFEST_PATH rust/Cargo.toml CRATES cxx_qt_test)
-target_link_libraries(cxx_qt_test INTERFACE Qt::Core Qt::Gui Qt::Qml Qt::QuickControls2)
+cxx_qt_import_crate(
+    MANIFEST_PATH rust/Cargo.toml
+    CRATES cxx_qt_test
+    QT_MODULES Qt::Core Qt::Gui Qt::Qml Qt::QuickControls2
+)
+# target_link_libraries(cxx_qt_test INTERFACE Qt::Core Qt::Gui Qt::Qml Qt::QuickControls2)
 
 cxx_qt_import_qml_module(cxx_qt_test_qml_module
     URI "com.nb.cxx_qt.test"
