@@ -4,10 +4,10 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-cxx = "1.0.124"
-cxx-qt = "0.6.1"
-cxx-qt-lib = "0.6.1"
+cxx = "1.0.156"
+cxx-qt = "0.7.1"
+cxx-qt-lib = { version = "0.7.1", features = ["full"] }
 
 [build-dependencies]
 # The link_qt_object_files features is required for statically linking Qt 6.
-cxx-qt-build = { version = "0.6.1", features = [ "link_qt_object_files" ] }
+cxx-qt-build = { version = "0.7.1", features = [ "link_qt_object_files" ] }
